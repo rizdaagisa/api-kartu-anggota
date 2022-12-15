@@ -208,25 +208,26 @@ def upload_file():
        f.save(secure_filename(f.filename))
        return 'file uploaded successfully'
 
-@app.route('/',methods=['POST','GET'])
+@app.route('/',methods=['GET'])
 def index():
-    if request.method == 'GET':
-        return "mau ngapain bro?"
+    return "mau ngapain bro?"
+#     if request.method == 'GET':
+#         return "mau ngapain bro?"
 
-    if request.method == 'POST':
-        result = request.get_json(force=True)
-        print(result)
-        depan = kartu_depan(result)
-        belakang = kartu_belakang(result['no_anggota'])
-        if((depan == True) and (belakang == True)):
-            data = {
-                "result" : "ok",
-                "front" : base+"static/front/"+result['no_anggota']+".jpg",
-                "back" : base+"static/back/"+result['no_anggota']+".jpg"
-            }
-            return data
-        else:
-            return {'result' : 'failed'}
+#     if request.method == 'POST':
+#         result = request.get_json(force=True)
+#         print(result)
+#         depan = kartu_depan(result)
+#         belakang = kartu_belakang(result['no_anggota'])
+#         if((depan == True) and (belakang == True)):
+#             data = {
+#                 "result" : "ok",
+#                 "front" : base+"static/front/"+result['no_anggota']+".jpg",
+#                 "back" : base+"static/back/"+result['no_anggota']+".jpg"
+#             }
+#             return data
+#         else:
+#             return {'result' : 'failed'}
 
 # if __name__ == '__main__':
 #     port = int(os.environ.get("PORT", 5000))
